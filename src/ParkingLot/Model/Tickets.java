@@ -1,10 +1,8 @@
-package ParkingLot;
+package ParkingLot.Model;
 
 public class Tickets {
-    String parking_lot_id;
-    int floor_no;
-    int slot_no;
-    String ticketId;
+    private int floor_no, slot_no;
+    private String ticketId, parking_lot_id;
     public Tickets() {
         this.ticketId = "";
         this.floor_no = -1;

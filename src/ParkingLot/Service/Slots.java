@@ -1,12 +1,11 @@
-package ParkingLot;
+package ParkingLot.Service;
 
-import java.util.Vector;
+import ParkingLot.Constants.VehicleType;
 
 public class Slots {
-    int floorNo;
-    VehicleType vehicleType;
-    int slotNumber;
-    boolean isOccupied;
+    private int floorNo, slotNumber;
+    private VehicleType vehicleType;
+    private boolean isOccupied;
 
     public Slots(int floorNo, VehicleType vehicle, int slotNumber) {
         this.slotNumber = slotNumber;

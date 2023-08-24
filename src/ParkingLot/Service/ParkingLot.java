@@ -1,25 +1,29 @@
-package ParkingLot;
+package ParkingLot.Service;
+
+import ParkingLot.Constants.VehicleType;
+import ParkingLot.Model.Tickets;
+import ParkingLot.Model.Vehicles;
 
 import java.util.*;
 
 public class ParkingLot {
-    int floorCount;
-    String id;
-    int slots_per_floor;
-    List<Floors> floorsList = new ArrayList<Floors>();
-    HashMap<String,Vehicles> vehicleTicketMap = new HashMap<String,Vehicles>();
+    private int floorCount, slots_per_floor;
+    private String id;
+    private List<Floors> floorsList = new ArrayList<Floors>();
+    private HashMap<String, Vehicles> vehicleTicketMap = new HashMap<String,Vehicles>();
 
     public ParkingLot(int floorCount, String id, int slots_per_floor) {
         this.floorCount = floorCount;
         this.id = id;
         this.slots_per_floor = slots_per_floor;
-
+        initializeParkingLot();
+    }
+    private void initializeParkingLot() {
         for(int i=0;i<floorCount;i++) {
             Floors floor = new Floors(i+1,slots_per_floor);
             floorsList.add(floor);
         }
     }
-
     public void addFloor(int slotsCount) {
         floorCount += 1;
         Floors floor = new Floors(floorCount+1,slotsCount);
@@ -53,7 +57,7 @@ public class ParkingLot {
         return ticket;
     }
 
-    public void unparkVehicle(String ticketId) {
+    public void unpackVehicle(String ticketId) {
         String ticketDetails[] = ticketId.split("_",3);
         int floorNumber = Integer.parseInt(ticketDetails[1]);
         int slotNumber = Integer.parseInt(ticketDetails[2]);

@@ -1,4 +1,6 @@
-import ParkingLot.*;
+import ParkingLot.Constants.VehicleType;
+import ParkingLot.Model.*;
+import ParkingLot.Service.ParkingLot;
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -41,7 +43,7 @@ public class Main {
                     }
                     break;
                 case "unpark_vehicle":
-                    parkingLot.unparkVehicle(commandInfo[1]);
+                    parkingLot.unpackVehicle(commandInfo[1]);
                     break;
                 case "display":
                     switch (commandInfo[1]) {
