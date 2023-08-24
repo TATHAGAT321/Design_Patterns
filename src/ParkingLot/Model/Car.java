@@ -1,6 +1,8 @@
-package ParkingLot;
+package ParkingLot.Model;
 
-public class Car extends Vehicles{
+import ParkingLot.Constants.VehicleType;
+
+public class Car extends Vehicles {
 
     public Car(String color, String regNum) {
         this.color = color;

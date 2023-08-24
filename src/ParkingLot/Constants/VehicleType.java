@@ -1,4 +1,4 @@
-package ParkingLot;
+package ParkingLot.Constants;
 
 public enum VehicleType {
     TRUCK(1), BIKE(2), CAR(3);

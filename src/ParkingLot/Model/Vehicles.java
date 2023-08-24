@@ -1,11 +1,11 @@
-package ParkingLot;
+package ParkingLot.Model;
+
+import ParkingLot.Constants.VehicleType;
 
 public abstract class Vehicles {
-    String registrationNumber;
-    String color;
-    VehicleType type;
-    int slotNumber;
-    int floorNumber;
+    protected String registrationNumber, color;
+    protected VehicleType type;
+    private int slotNumber, floorNumber;
 
 
     public void setFloorNumber(int floorNumber) {

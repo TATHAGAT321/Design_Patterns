@@ -1,4 +1,6 @@
-package ParkingLot;
+package ParkingLot.Service;
+
+import ParkingLot.Constants.VehicleType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,27 +8,34 @@ import java.util.PriorityQueue;
 import java.util.Vector;
 
 public class Floors {
-    int floorNumber;
-    int maxSlotCount;
-    List<Slots> slotsList = new ArrayList<Slots>();
-    Vector<PriorityQueue<Integer>> slotStore = new Vector<PriorityQueue<Integer>>();
+    private int floorNumber, maxSlotCount;
+    private List<Slots> slotsList = new ArrayList<Slots>();
+    private Vector<PriorityQueue<Integer>> slotStore = new Vector<PriorityQueue<Integer>>();
 
-    int countVacant[] = new int[4]; //  1--> TRUCK, 2 --> BIKE, 3 -->CAR
+    private int countVacant[] = new int[4]; //  1--> TRUCK, 2 --> BIKE, 3 -->CAR
 
     public Floors(int floorNumber, int maxSlotCount) {
         this.floorNumber = floorNumber;
         this.maxSlotCount = maxSlotCount;
+        initializeFloor();
+    }
+    private void initializeFloor(){
 
         for(int i=1;i<=maxSlotCount;i++) {
             Slots localSlot;
             int slotStoreSize = slotStore.size();
             System.out.println("SlotStore Size " + slotStoreSize);
-            if(i == 1)
-                localSlot = new Slots(floorNumber,VehicleType.TRUCK,i);
-            else if(i == 2 || i== 3)
-                localSlot = new Slots(floorNumber,VehicleType.BIKE,i);
-            else
-                localSlot = new Slots(floorNumber,VehicleType.CAR,i);
+            switch (i) {
+                case 1:
+                    localSlot = new Slots(floorNumber, VehicleType.TRUCK, i);
+                    break;
+                case 2:
+                case 3:
+                    localSlot = new Slots(floorNumber, VehicleType.BIKE, i);
+                    break;
+                default:
+                    localSlot = new Slots(floorNumber, VehicleType.CAR, i);
+            }
 
             int index = localSlot.getVehicleType().getValue();
             countVacant[index] += 1;
@@ -103,9 +112,9 @@ public class Floors {
 
         maxSlotCount += 1;
         if(maxSlotCount % 4 == 0){
-            localSlot = new Slots(floorNumber,VehicleType.CAR,maxSlotCount);
+            localSlot = new Slots(floorNumber, VehicleType.CAR,maxSlotCount);
         } else if(maxSlotCount%4 == 1) {
-            localSlot = new Slots(floorNumber,VehicleType.CAR,maxSlotCount);
+            localSlot = new Slots(floorNumber, VehicleType.CAR,maxSlotCount);
         } else {
             localSlot = new Slots(floorNumber, VehicleType.BIKE,maxSlotCount);
         }
